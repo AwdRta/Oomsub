@@ -24,15 +24,15 @@ namespace API.Entities
     [Required]
     public string Branch { get; set; }
 
-    public string? ImageName { get; set; }
-    public string? MobileNumber { get; set; }
+    public string ImageName { get; set; }
+    public string MobileNumber { get; set; }
     [DataType(DataType.EmailAddress)]
-    public string? Email { get; set; }
+    public string Email { get; set; }
     [StringLength(20)]
-    public string? Username { get; set; }
+    public string Username { get; set; }
     [StringLength(20)]
     [DataType(DataType.Password)]
-    public string? Password { get; set; }
+    public string Password { get; set; }
 
     [StringLength(1)]
     public string MemStatus { get; set; } = "A";
