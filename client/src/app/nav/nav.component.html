@@ -1,0 +1,118 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-xl sticky-top">
+  <div class="container">
+    <a
+      class="navbar-brand"
+      asp-area="Info"
+      asp-controller="Home"
+      asp-action="Index"
+      >กองการออมทรัพย์</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#mainNav"
+      aria-controls="mainNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="mainNav">
+      <ul class="navbar-nav ms-auto" *ngIf="loggedIn">
+        <li class="nav-item">
+          <a class="nav-link" href="#">คำนวณเงินผ่อน อทบ.</a>
+        </li>
+        <li class="nav-item dropdown" dropdown>
+          <a
+            dropdownToggle
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+            เกี่ยวกับ อทบ.
+          </a>
+          <ul class="dropdown-menu" *dropdownMenu>
+            <li><a class="dropdown-item" href="#">แบบฟอร์ม อทบ.</a></li>
+            <li><a class="dropdown-item" href="#">ระเบียบ อทบ.</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" href="#"
+                >วิธีการชำระเงิน อทบ. ผ่าน ธ.ทหารไทย</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown" dropdown>
+          <a
+            dropdownToggle
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+            อทบ.รายบุคคล
+          </a>
+          <ul class="dropdown-menu" *dropdownMenu>
+            <li><a class="dropdown-item" href="#">ข้อมูล อทบ.รายบุคคล</a></li>
+            <li><a class="dropdown-item" href="#">สมัครสมาชิก</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">ลืมรหัสผ่าน</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown" dropdown>
+          <a
+            dropdownToggle
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+            เกี่ยวกับเรา
+          </a>
+          <ul class="dropdown-menu" *dropdownMenu>
+            <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
+            <li><a class="dropdown-item" href="#">ติดต่อเรา</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form
+        #loginForm="ngForm"
+        class="d-flex ms-auto"
+        (ngSubmit)="login()"
+        autocomplete="off">
+        <input
+          name="username"
+          [(ngModel)]="model.username"
+          type="text"
+          class="form-control me-2"
+          placeholder="Username" />
+        <input
+          name="password"
+          [(ngModel)]="model.password"
+          type="password"
+          class="form-control me-2"
+          placeholder="Password" />
+        <button class="btn btn-sm btn-outline-success" type="submit">
+          Login
+        </button>
+      </form>
+      <!-- <div class="d-flex ms-auto">
+        <a
+          class="btn btn-outline-light text-decoration-none me-2"
+          asp-area="Member"
+          asp-controller="Member"
+          asp-action="Register"
+          >สมัครสมาชิก</a
+        >
+        <a
+          class="btn btn-primary"
+          asp-area="Member"
+          asp-controller="Home"
+          asp-action="Login"
+          >เข้าสู่ระบบ</a
+        >
+      </div> -->
+    </div>
+  </div>
+</nav>
