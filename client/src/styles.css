@@ -18,3 +18,21 @@ body {
   font-weight: 400;
   margin-bottom: 60px;
 }
+
+nav {
+  background: linear-gradient(135deg, #172a74, #21a9af);
+  background-color: #184e8e;
+}
+
+.nav-link {
+  color: #fff;
+}
+
+.section-member {
+  padding: 1.6rem 0;
+}
+
+.form-signin {
+  max-width: 330px;
+  height: 90%;
+}
