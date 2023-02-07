@@ -1,5 +1,6 @@
 using API.Data;
 using API.Entities;
+using API.Entities.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,18 +16,16 @@ namespace API.Controllers
       _db = db;
     }
 
-    [AllowAnonymous]
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
-    {
-      var model = await _db.Customer.Take(20).ToListAsync();
-      return model;
-    }
-
     [HttpGet("{custCode}")]
-    public async Task<ActionResult<Customer>> GetCustomer(string custCode)
+    public async Task<ActionResult<MemberVM>> GetCustomer(string custCode)
     {
-      return await _db.Customer.FirstOrDefaultAsync(a => a.CustCode == custCode);
+      MemberVM vm = new()
+      {
+        Customer = await _db.Customer.FirstOrDefaultAsync(a => a.CustCode == custCode),
+        AccDpst = await _db.AccDpst.FirstOrDefaultAsync(a => a.CustCode == custCode && a.AccStatus == "A"),
+        AccLoanList = await _db.AccLoan.Where(a => a.CustCode == custCode).Where(a => a.AccStatus == "A").ToListAsync()
+      };
+      return vm;
     }
   }
 }
