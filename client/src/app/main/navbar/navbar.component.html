@@ -1,26 +1,22 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-xl sticky-top">
   <div class="container">
-    <a
-      class="navbar-brand"
-      asp-area="Info"
-      asp-controller="Home"
-      asp-action="Index"
-      >กองการออมทรัพย์</a
-    >
+    <a class="navbar-brand">กองการออมทรัพย์</a>
     <button
       class="navbar-toggler"
       type="button"
-      data-bs-toggle="collapse"
       data-bs-target="#mainNav"
       aria-controls="mainNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation">
+      aria-label="Toggle navigation"
+      (click)="isCollapsed = !isCollapsed"
+      [attr.aria-expanded]="!isCollapsed">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse justify-content-between" id="mainNav">
-      <ul
-        class="navbar-nav ms-auto"
-        *ngIf="accountService.currentCustomer$ | async">
+    <div
+      [collapse]="!isCollapsed"
+      [isAnimated]="true"
+      class="collapse navbar-collapse justify-content-between"
+      id="mainNav">
+      <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a class="nav-link" href="#">คำนวณเงินผ่อน อทบ.</a>
         </li>
@@ -73,73 +69,23 @@
             เกี่ยวกับเรา
           </a>
           <ul class="dropdown-menu" *dropdownMenu>
-            <li><a class="dropdown-item" href="#">ประวัติความเป็นมา</a></li>
-            <li><a class="dropdown-item" href="#">ติดต่อเรา</a></li>
+            <li>
+              <a class="dropdown-item" href="#">ประวัติความเป็นมา</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">ติดต่อเรา</a>
+            </li>
           </ul>
         </li>
       </ul>
-      <div
-        class="d-flex ms-auto"
-        *ngIf="accountService.currentCustomer$ | async">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item dropdown" dropdown>
-            <a
-              dropdownToggle
-              href="#"
-              class="nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              >Welcome User</a
-            >
-            <ul class="dropdown-menu" *dropdownMenu>
-              <li><a href="#" class="dropdown-item">1</a></li>
-              <li>
-                <a href="#" class="dropdown-item" (click)="logout()">Logout</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <div
-        class="d-flex ms-auto"
-        *ngIf="!(accountService.currentCustomer$ | async)">
+      <div class="d-flex ms-auto">
         <a
+          routerLink="/register"
           class="btn btn-outline-light text-decoration-none me-2"
-          asp-area="Member"
-          asp-controller="Member"
-          asp-action="Register"
           >สมัครสมาชิก</a
         >
-        <a
-          class="btn btn-primary"
-          asp-area="Member"
-          asp-controller="Home"
-          asp-action="Login"
-          >เข้าสู่ระบบ</a
-        >
+        <a routerLink="/login" class="btn btn-primary">เข้าสู่ระบบ</a>
       </div>
-      <!-- <form
-        *ngIf="!(accountService.currentCustomer$ | async)"
-        #loginForm="ngForm"
-        class="d-flex ms-auto"
-        (ngSubmit)="login()"
-        autocomplete="off">
-        <input
-          name="username"
-          [(ngModel)]="model.username"
-          type="text"
-          class="form-control me-2"
-          placeholder="Username" />
-        <input
-          name="password"
-          [(ngModel)]="model.password"
-          type="password"
-          class="form-control me-2"
-          placeholder="Password" />
-        <button class="btn btn-sm btn-outline-success" type="submit">
-          Login
-        </button>
-      </form> -->
     </div>
   </div>
 </nav>

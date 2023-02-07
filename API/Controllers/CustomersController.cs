@@ -23,10 +23,10 @@ namespace API.Controllers
       return model;
     }
 
-    [HttpGet("{citizenId}")]
-    public async Task<ActionResult<Customer>> GetCustomer(string citizenId)
+    [HttpGet("{custCode}")]
+    public async Task<ActionResult<Customer>> GetCustomer(string custCode)
     {
-      return await _db.Customer.FirstOrDefaultAsync(a => a.CitizenId == citizenId);
+      return await _db.Customer.FirstOrDefaultAsync(a => a.CustCode == custCode);
     }
   }
 }
