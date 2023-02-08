@@ -49,6 +49,7 @@ namespace API.Controllers
       var user = await _db.Customer.SingleOrDefaultAsync(a => a.Username == login.Username &&
                                                          a.Password == login.Password);
       if (user == null) return Unauthorized();
+
       return new UserDto
       {
         Username = user.Username,

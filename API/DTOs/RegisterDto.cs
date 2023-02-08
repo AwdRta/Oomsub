@@ -6,6 +6,8 @@ namespace API.DTOs
   {
     [Required]
     public string CitizenId { get; set; }
+    [Required]
+    public string GovId { get; set; }
     public string Email { get; set; }
     [Required]
     public string Username { get; set; }

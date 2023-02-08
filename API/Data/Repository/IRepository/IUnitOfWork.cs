@@ -17,6 +17,7 @@ namespace API.Data.Repository.IRepository
 
     IDocTypeRepository DocTypeRepository { get; }
     IDocRepository DocRepository { get; }
+
     IInfoRepository InfoRepository { get; }
 
     Task<bool> Complete();
